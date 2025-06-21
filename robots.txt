@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://apoorvdarshan.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
+
+# Allow all content for this horror-themed portfolio
+# No restrictions on crawling
+
+# Disallow any temporary or development files
+Disallow: /temp/
+Disallow: /dev/
+Disallow: /*.log$ 
