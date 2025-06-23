@@ -311,6 +311,21 @@ h3 {
   gap: 15px;
 }
 
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+}
+
 .project-item {
   display: grid;
   grid-template-columns: 2fr 2fr 1fr;
@@ -322,10 +337,18 @@ h3 {
   transition: all 0.3s ease;
 }
 
+.project-link:hover .project-item,
 .project-item:hover {
   background: rgba(0, 255, 65, 0.1);
   box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
   transform: translateX(5px);
+}
+
+.project-link:active .project-item {
+  background: rgba(255, 102, 0, 0.2);
+  border-color: #ff6600;
+  box-shadow: 0 0 25px rgba(255, 102, 0, 0.5);
+  transform: translateX(3px) scale(0.98);
 }
 
 .project-name {
@@ -575,6 +598,21 @@ video {
   gap: 15px;
 }
 
+.cert-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+}
+
 .cert-item {
   padding: 15px;
   border: 1px solid #00ff41;
@@ -583,9 +621,18 @@ video {
   transition: all 0.3s ease;
 }
 
+.cert-link:hover .cert-item,
 .cert-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
+  background: rgba(0, 255, 65, 0.1);
+}
+
+.cert-link:active .cert-item {
+  background: rgba(255, 102, 0, 0.2);
+  border-color: #ff6600;
+  box-shadow: 0 0 20px rgba(255, 102, 0, 0.5);
+  transform: translateY(-1px) scale(0.98);
 }
 
 .cert-name {
