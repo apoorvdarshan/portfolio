@@ -28,7 +28,7 @@ Horror-themed CRT television interface portfolio inspired by "The Ring" movie. I
   <a href="https://youtube.com/@apoorvdarshan">
     <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" />
   </a>
-  <a href="https://instagram.com/apoorvcode">
+  <a href="https://instagram.com/apoorvdarshan">
     <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
   </a>
 </p>
