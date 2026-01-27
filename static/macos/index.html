@@ -32,86 +32,11 @@
     .wallpaper {
       position: fixed;
       inset: 0;
-      background: linear-gradient(180deg,
-        #1e3a5f 0%,
-        #2d5a87 15%,
-        #3d7ab0 30%,
-        #5a9fd4 45%,
-        #8ec5eb 55%,
-        #f5a670 65%,
-        #e8836a 75%,
-        #d96570 85%,
-        #c94b7c 100%
-      );
+      background: #1a1a2e;
     }
 
-    /* Animated wave layers */
-    .wave {
-      position: absolute;
-      width: 200%;
-      height: 100%;
-      left: -50%;
-    }
-
-    .wave-1 {
-      bottom: 0;
-      background: linear-gradient(180deg,
-        transparent 0%,
-        transparent 40%,
-        rgba(100, 180, 230, 0.6) 50%,
-        rgba(70, 150, 200, 0.8) 60%,
-        #4a90c2 70%,
-        #3d7ab0 100%
-      );
-      border-radius: 50% 50% 0 0 / 20% 20% 0 0;
-      transform: translateY(30%);
-      animation: wave1 20s ease-in-out infinite;
-    }
-
-    .wave-2 {
-      bottom: 0;
-      background: linear-gradient(180deg,
-        transparent 0%,
-        transparent 50%,
-        rgba(245, 166, 112, 0.5) 60%,
-        rgba(232, 131, 106, 0.7) 70%,
-        #e07060 85%,
-        #d55a6a 100%
-      );
-      border-radius: 45% 55% 0 0 / 15% 25% 0 0;
-      transform: translateY(25%);
-      animation: wave2 25s ease-in-out infinite;
-    }
-
-    .wave-3 {
-      bottom: 0;
-      background: linear-gradient(180deg,
-        transparent 0%,
-        transparent 55%,
-        rgba(201, 75, 124, 0.4) 65%,
-        rgba(180, 60, 110, 0.6) 75%,
-        #b03d70 90%,
-        #9a2d60 100%
-      );
-      border-radius: 40% 60% 0 0 / 25% 15% 0 0;
-      transform: translateY(20%);
-      animation: wave3 18s ease-in-out infinite;
-    }
-
-    @keyframes wave1 {
-      0%, 100% { transform: translateY(30%) translateX(0); }
-      50% { transform: translateY(28%) translateX(2%); }
-    }
-
-    @keyframes wave2 {
-      0%, 100% { transform: translateY(25%) translateX(0); }
-      50% { transform: translateY(27%) translateX(-2%); }
-    }
-
-    @keyframes wave3 {
-      0%, 100% { transform: translateY(20%) translateX(0); }
-      50% { transform: translateY(22%) translateX(1%); }
-    }
+    /* Waves hidden for solid color wallpaper */
+    .wave { display: none; }
 
     /* Menu Bar */
     .menu-bar {
