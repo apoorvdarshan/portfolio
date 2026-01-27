@@ -1,42 +1,41 @@
-# 📺 Apoorv Darshan - Developer Portfolio
+# Joan Ramos Refusta's Portfolio
+Welcome!
+I've always wanted to create a portfolio showcasing my skills with GLSL shaders and Three.js, along with a platform to display all my side projects and experiments. This portfolio serves as a showcase of my journey as a 3D developer and a place to explore my various side projects, including video games. I've included elements that reflect my personal interests, such as my favorite video games, an interactive Rubik's cube, and an arcade machine.
 
-🌐 **Live Portfolio:** [apoorvdarshan.com](https://apoorvdarshan.com)
+You can now explore it [here](https://joanramosrefusta.com/).
 
-Horror-themed CRT television interface portfolio inspired by "The Ring" movie. Interactive channel system showcasing professional experience, skills, and projects.
 
-## ✨ Features
+## Links
 
-- **12 Interactive Channels** - Welcome, Skills, Experience, Projects, Contact, Secret
-- **Multiple Navigation** - Keyboard, mouse, touch swipes, arrow buttons
-- **Responsive Design** - Desktop, tablet, mobile optimized
-- **Horror Effects** - CRT glitches, static noise, typewriter text, audio feedback
-- **Touch Gestures** - Swipe left/right on mobile (<1200px)
+### Joan's Arcade Machine
+- [Source Code](https://github.com/jrefusta/joan-arcade-machine)
+- [Live Demo](https://joan-arcade-machine.vercel.app/)
 
-## 🛠️ Tech Stack
+### Joan's OS
+- [Source Code](https://github.com/jrefusta/joan-os)
+- [Live Demo](https://joan-os.vercel.app/)
 
-- HTML5, CSS3, Vanilla JavaScript
-- Font Awesome icons, Google Fonts
-- Web Audio API, Touch Events
+### Joan's Art Gallery
+- [Source Code](https://github.com/jrefusta/joan-art-gallery)
+- [Live Demo](https://joan-art-gallery.vercel.app/)
 
-## 🌐 Socials
+## Setup
 
-<p align="center">
-  <a href="https://github.com/apoorvdarshan"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
-  <a href="https://x.com/apoorvdarshan"><img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=twitter&logoColor=white" /></a>
-  <a href="https://www.linkedin.com/in/apoorvdarshan"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
-  <a href="mailto:ad13dtu@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
-  <a href="https://youtube.com/@apoorvdarshan">
-    <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" />
-  </a>
-  <a href="https://instagram.com/apoorvdarshan">
-    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
-  </a>
-</p>
+Download [Node.js](https://nodejs.org/en/download/).
+Run this followed commands:
 
----
+``` bash
+# Install dependencies (only the first time)
+npm install
 
-⭐ **Give this repo a star if you found it helpful!**
+# Run the local server at localhost:8080
+npm run dev
 
-📄 **License:** [MIT](LICENSE)
+# Build for production in the dist/ directory
+npm run build
+```
 
-_Built with 💀 by Apoorv Darshan | 2025_
+## License
+This project is licensed under the [MIT License](LICENSE).
+
+
