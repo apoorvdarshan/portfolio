@@ -17,6 +17,8 @@
       --menu-bg: rgba(36, 33, 40, 0.75);
       --dock-bg: rgba(50, 48, 55, 0.45);
       --text-primary: rgba(255, 255, 255, 0.95);
+      --window-bg: rgba(30, 30, 35, 0.92);
+      --titlebar-bg: rgba(50, 48, 54, 0.98);
     }
 
     body {
@@ -28,15 +30,11 @@
       cursor: default;
     }
 
-    /* macOS Big Sur/Monterey Style Wallpaper */
     .wallpaper {
       position: fixed;
       inset: 0;
       background: #1a1a2e;
     }
-
-    /* Waves hidden for solid color wallpaper */
-    .wave { display: none; }
 
     /* Menu Bar */
     .menu-bar {
@@ -52,7 +50,6 @@
       color: var(--text-primary);
       font-size: 13px;
       font-weight: 500;
-      letter-spacing: -0.01em;
       z-index: 100;
     }
 
@@ -114,7 +111,6 @@
       font-variant-numeric: tabular-nums;
     }
 
-    /* Battery with percentage */
     .battery {
       display: flex;
       align-items: center;
@@ -122,10 +118,7 @@
       font-size: 12px;
     }
 
-    .battery-icon {
-      display: flex;
-      align-items: center;
-    }
+    .battery-icon { display: flex; align-items: center; }
 
     .battery-body {
       width: 22px;
@@ -176,7 +169,6 @@
       align-items: flex-end;
     }
 
-    /* Desktop Icons */
     .desktop-icon {
       display: flex;
       flex-direction: column;
@@ -190,7 +182,6 @@
 
     .desktop-icon:hover { background: rgba(255, 255, 255, 0.12); }
     .desktop-icon.selected { background: rgba(0, 122, 255, 0.4); }
-    .desktop-icon:active { transform: scale(0.97); }
 
     .icon-wrapper {
       width: 60px;
@@ -200,31 +191,6 @@
       align-items: center;
       justify-content: center;
     }
-
-    .app-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .app-icon::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 55%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 100%);
-      border-radius: 13px 13px 50% 50%;
-    }
-
-    .app-icon svg { width: 34px; height: 34px; position: relative; z-index: 1; }
 
     .desktop-icon-img {
       width: 60px;
@@ -239,54 +205,6 @@
       text-align: center;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 8px rgba(0, 0, 0, 0.3);
       line-height: 1.25;
-    }
-
-    /* Icon Colors */
-    .icon-instagram { background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #FCB045 100%); }
-    .icon-experience { background: linear-gradient(180deg, #5AC8FA 0%, #007AFF 100%); }
-    .icon-contact { background: linear-gradient(180deg, #64D2FF 0%, #0A84FF 100%); }
-    .icon-credits { background: linear-gradient(180deg, #63636b 0%, #3a3a3c 100%); }
-    .icon-projects { background: linear-gradient(180deg, #FF9F0A 0%, #FF6B00 100%); }
-
-    /* Social Icon Colors */
-    .icon-linkedin { background: linear-gradient(180deg, #0A78B5 0%, #0A66C2 100%); }
-    .icon-github { background: linear-gradient(180deg, #333 0%, #1a1a1a 100%); }
-    .icon-x { background: linear-gradient(180deg, #333 0%, #000 100%); }
-    .icon-youtube { background: linear-gradient(180deg, #FF0000 0%, #CC0000 100%); }
-    .icon-twitch { background: linear-gradient(180deg, #9146FF 0%, #6441A5 100%); }
-    .icon-reddit { background: linear-gradient(180deg, #FF5700 0%, #FF4500 100%); }
-    .icon-credly { background: linear-gradient(180deg, #FF6B00 0%, #FF5500 100%); }
-    .icon-cal { background: linear-gradient(180deg, #292929 0%, #111 100%); }
-
-    /* PDF Icon */
-    .pdf-icon {
-      width: 48px;
-      height: 60px;
-      background: linear-gradient(180deg, #FFFFFF 0%, #F5F5F7 100%);
-      border-radius: 5px;
-      position: relative;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.15);
-    }
-
-    .pdf-icon::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      border-width: 0 12px 12px 0;
-      border-style: solid;
-      border-color: #e8e8ed #2d2d2f #e8e8ed;
-    }
-
-    .pdf-icon::after {
-      content: 'PDF';
-      position: absolute;
-      bottom: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 10px;
-      font-weight: 700;
-      color: #FF3B30;
     }
 
     /* Dock */
@@ -328,20 +246,8 @@
       justify-content: center;
       cursor: pointer;
       transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), margin 0.2s;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .dock-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
-      border-radius: 11px 11px 50% 50%;
+      background: transparent !important;
+      box-shadow: none !important;
     }
 
     .dock-item:hover {
@@ -349,11 +255,11 @@
       margin: 0 6px;
     }
 
-    .dock-item svg {
-      width: 28px;
-      height: 28px;
-      position: relative;
-      z-index: 1;
+    .dock-item img {
+      width: 50px;
+      height: 50px;
+      border-radius: 11px;
+      object-fit: contain;
     }
 
     .dock-indicator {
@@ -363,7 +269,10 @@
       border-radius: 50%;
       margin-top: 3px;
       box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+      display: none;
     }
+
+    .dock-indicator.active { display: block; }
 
     .dock-separator {
       width: 1px;
@@ -373,7 +282,6 @@
       align-self: center;
     }
 
-    /* Dock Tooltips */
     .dock-tooltip {
       position: absolute;
       bottom: 65px;
@@ -395,47 +303,52 @@
 
     .dock-item-container:hover .dock-tooltip { opacity: 1; }
 
-    /* Dock items with PNG icons */
-    .dock-item {
-      background: transparent !important;
-      box-shadow: none !important;
-      overflow: visible;
-    }
-
-    .dock-item::before {
-      display: none;
-    }
-
-    .dock-item img {
-      width: 50px;
-      height: 50px;
-      border-radius: 11px;
-      object-fit: contain;
-    }
-
-    /* Window - optional for more complex look */
+    /* Windows */
     .window {
       position: absolute;
-      top: 60px;
-      left: 40px;
-      width: 420px;
-      background: rgba(38, 36, 42, 0.88);
+      background: var(--window-bg);
       backdrop-filter: blur(40px) saturate(180%);
       -webkit-backdrop-filter: blur(40px) saturate(180%);
       border-radius: 10px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 0.5px rgba(255,255,255,0.1);
       overflow: hidden;
       display: none;
+      z-index: 10;
     }
 
-    .window.active { display: block; }
+    .window.active {
+      display: block;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .window.active.minimized {
+      transform: scale(0.1) translateY(500px);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .window.active.fullscreen {
+      top: 25px !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: calc(100vh - 85px) !important;
+      border-radius: 0;
+    }
+
+    .window.focused { z-index: 20; }
 
     .window-titlebar {
-      height: 28px;
-      background: rgba(50, 48, 54, 0.95);
+      height: 32px;
+      background: var(--titlebar-bg);
       display: flex;
       align-items: center;
-      padding: 0 10px;
+      padding: 0 12px;
+      gap: 8px;
+      cursor: default;
+    }
+
+    .window-controls {
+      display: flex;
       gap: 8px;
     }
 
@@ -444,8 +357,11 @@
       height: 12px;
       border-radius: 50%;
       cursor: pointer;
+      border: none;
+      transition: filter 0.15s;
     }
 
+    .window-btn:hover { filter: brightness(1.1); }
     .window-btn.close { background: #FF5F57; }
     .window-btn.minimize { background: #FFBD2E; }
     .window-btn.maximize { background: #28C840; }
@@ -456,31 +372,27 @@
       font-size: 13px;
       font-weight: 500;
       color: rgba(255,255,255,0.85);
-      margin-right: 52px;
+      margin-right: 60px;
     }
 
     .window-content {
-      padding: 16px;
       color: rgba(255,255,255,0.9);
       font-size: 13px;
       line-height: 1.5;
+      overflow: auto;
     }
 
+    /* Terminal specific */
     .terminal-content {
       font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
       font-size: 12px;
       padding: 12px;
       background: rgba(0,0,0,0.3);
-      min-height: 200px;
+      min-height: 250px;
     }
 
-    .terminal-prompt {
-      color: #32D74B;
-    }
-
-    .terminal-path {
-      color: #5AC8FA;
-    }
+    .terminal-prompt { color: #32D74B; }
+    .terminal-path { color: #5AC8FA; }
 
     .terminal-cursor {
       display: inline-block;
@@ -492,18 +404,577 @@
       margin-left: 2px;
     }
 
-    @keyframes blink {
-      50% { opacity: 0; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Chrome Browser */
+    .browser-toolbar {
+      height: 36px;
+      background: rgba(60, 60, 65, 0.95);
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      gap: 8px;
+    }
+
+    .browser-nav-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .browser-nav-btn:hover { background: rgba(255,255,255,0.1); }
+
+    .browser-url-bar {
+      flex: 1;
+      height: 28px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+    }
+
+    .browser-content {
+      background: #fff;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+
+    /* Notes */
+    .notes-sidebar {
+      width: 200px;
+      background: rgba(40,40,45,0.95);
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .notes-main {
+      flex: 1;
+      padding: 16px;
+      background: rgba(30,30,35,0.95);
+    }
+
+    .notes-item {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      cursor: pointer;
+    }
+
+    .notes-item:hover { background: rgba(255,255,255,0.05); }
+    .notes-item.active { background: rgba(0,122,255,0.3); }
+
+    .notes-title {
+      font-weight: 600;
+      font-size: 13px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .notes-preview {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+    }
+
+    /* Messages */
+    .messages-container {
+      display: flex;
+      height: 350px;
+    }
+
+    .messages-sidebar {
+      width: 220px;
+      background: rgba(40,40,45,0.95);
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .messages-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: rgba(30,30,35,0.95);
+    }
+
+    .message-contact {
+      padding: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .message-contact:hover { background: rgba(255,255,255,0.05); }
+
+    .contact-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .contact-info { flex: 1; }
+    .contact-name { font-weight: 500; font-size: 13px; color: white; }
+    .contact-preview { font-size: 11px; color: rgba(255,255,255,0.5); }
+
+    .messages-area {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    .message-bubble {
+      max-width: 70%;
+      padding: 8px 12px;
+      border-radius: 16px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .message-bubble.sent {
+      background: #007AFF;
+      color: white;
+      margin-left: auto;
+      border-bottom-right-radius: 4px;
+    }
+
+    .message-bubble.received {
+      background: rgba(60,60,65,0.95);
+      color: white;
+      border-bottom-left-radius: 4px;
+    }
+
+    .message-input {
+      padding: 12px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      gap: 8px;
+    }
+
+    .message-input input {
+      flex: 1;
+      background: rgba(60,60,65,0.95);
+      border: none;
+      border-radius: 18px;
+      padding: 8px 16px;
+      color: white;
+      font-size: 13px;
+      outline: none;
+    }
+
+    /* VS Code */
+    .vscode-container {
+      display: flex;
+      height: 350px;
+    }
+
+    .vscode-sidebar {
+      width: 48px;
+      background: rgba(30,30,35,0.98);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 0;
+      gap: 8px;
+    }
+
+    .vscode-sidebar-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .vscode-sidebar-icon:hover { color: white; }
+    .vscode-sidebar-icon.active {
+      color: white;
+      border-left: 2px solid #007ACC;
+    }
+
+    .vscode-explorer {
+      width: 200px;
+      background: rgba(37,37,40,0.98);
+      border-right: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .vscode-explorer-header {
+      padding: 10px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .vscode-file {
+      padding: 4px 12px 4px 24px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      cursor: pointer;
+    }
+
+    .vscode-file:hover { background: rgba(255,255,255,0.05); }
+
+    .vscode-editor {
+      flex: 1;
+      background: rgba(30,30,35,0.98);
+      font-family: 'SF Mono', monospace;
+      font-size: 12px;
+      padding: 12px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.6;
+    }
+
+    .code-keyword { color: #C586C0; }
+    .code-function { color: #DCDCAA; }
+    .code-string { color: #CE9178; }
+    .code-comment { color: #6A9955; }
+    .code-number { color: #B5CEA8; }
+
+    /* Settings */
+    .settings-container {
+      display: flex;
+      height: 350px;
+    }
+
+    .settings-sidebar {
+      width: 220px;
+      background: rgba(40,40,45,0.95);
+      padding: 12px 0;
+    }
+
+    .settings-item {
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      color: rgba(255,255,255,0.8);
+      font-size: 13px;
+    }
+
+    .settings-item:hover { background: rgba(255,255,255,0.05); }
+    .settings-item.active { background: rgba(0,122,255,0.3); }
+
+    .settings-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .settings-main {
+      flex: 1;
+      padding: 20px;
+      background: rgba(30,30,35,0.95);
+    }
+
+    .settings-section-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .settings-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .settings-option-label {
+      color: rgba(255,255,255,0.9);
+      font-size: 13px;
+    }
+
+    .toggle-switch {
+      width: 40px;
+      height: 24px;
+      background: rgba(120,120,130,0.3);
+      border-radius: 12px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .toggle-switch.on { background: #32d74b; }
+
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.2s;
+    }
+
+    .toggle-switch.on::after { transform: translateX(16px); }
+
+    /* About Me / Experience / Credits */
+    .info-window {
+      padding: 24px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .info-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .info-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: white;
+    }
+
+    .info-name {
+      font-size: 24px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .info-title {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+
+    .info-section {
+      margin-top: 20px;
+    }
+
+    .info-section-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .info-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .experience-item {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .experience-role {
+      font-weight: 600;
+      color: white;
+      font-size: 15px;
+    }
+
+    .experience-company {
+      color: #007AFF;
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .experience-date {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+    }
+
+    /* Spotify */
+    .spotify-container {
+      background: linear-gradient(180deg, #1a1a2e 0%, #121212 100%);
+      min-height: 300px;
+      padding: 20px;
+    }
+
+    .spotify-now-playing {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .spotify-album-art {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #1DB954 0%, #191414 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+
+    .spotify-track-info { flex: 1; }
+
+    .spotify-track-name {
+      font-size: 20px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .spotify-artist {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+
+    .spotify-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .spotify-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .spotify-btn.play {
+      width: 48px;
+      height: 48px;
+      background: #1DB954;
+    }
+
+    .spotify-progress {
+      height: 4px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
+      margin-top: 16px;
+    }
+
+    .spotify-progress-bar {
+      width: 35%;
+      height: 100%;
+      background: #1DB954;
+      border-radius: 2px;
+    }
+
+    /* Mail */
+    .mail-container {
+      display: flex;
+      height: 350px;
+    }
+
+    .mail-sidebar {
+      width: 180px;
+      background: rgba(40,40,45,0.95);
+      padding: 12px 0;
+    }
+
+    .mail-folder {
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: rgba(255,255,255,0.8);
+      font-size: 13px;
+    }
+
+    .mail-folder:hover { background: rgba(255,255,255,0.05); }
+    .mail-folder.active { background: rgba(0,122,255,0.3); }
+
+    .mail-badge {
+      background: #007AFF;
+      color: white;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      margin-left: auto;
+    }
+
+    .mail-list {
+      width: 280px;
+      background: rgba(35,35,40,0.95);
+      border-right: 1px solid rgba(255,255,255,0.05);
+      overflow-y: auto;
+    }
+
+    .mail-item {
+      padding: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      cursor: pointer;
+    }
+
+    .mail-item:hover { background: rgba(255,255,255,0.03); }
+
+    .mail-sender {
+      font-weight: 600;
+      font-size: 13px;
+      color: white;
+    }
+
+    .mail-subject {
+      font-size: 12px;
+      color: rgba(255,255,255,0.8);
+      margin-top: 2px;
+    }
+
+    .mail-preview {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .mail-content {
+      flex: 1;
+      padding: 20px;
+      background: rgba(30,30,35,0.95);
     }
   </style>
 </head>
 <body>
-  <!-- Wallpaper with waves -->
-  <div class="wallpaper">
-    <div class="wave wave-1"></div>
-    <div class="wave wave-2"></div>
-    <div class="wave wave-3"></div>
-  </div>
+  <div class="wallpaper"></div>
 
   <!-- Menu Bar -->
   <div class="menu-bar">
@@ -513,7 +984,7 @@
           <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
         </svg>
       </div>
-      <span class="menu-item active">Finder</span>
+      <span class="menu-item active" id="menu-app-name">Finder</span>
       <span class="menu-item">File</span>
       <span class="menu-item">Edit</span>
       <span class="menu-item">View</span>
@@ -541,21 +1012,18 @@
           <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
         </svg>
       </div>
-      <div class="menu-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z"/>
-        </svg>
-      </div>
       <span class="menu-icon menu-time" id="clock"></span>
     </div>
   </div>
 
   <!-- Terminal Window -->
-  <div class="window active" id="terminal-window">
+  <div class="window active" id="window-terminal" style="top: 60px; left: 40px; width: 500px;">
     <div class="window-titlebar">
-      <div class="window-btn close" onclick="this.closest('.window').classList.remove('active')"></div>
-      <div class="window-btn minimize"></div>
-      <div class="window-btn maximize"></div>
+      <div class="window-controls">
+        <div class="window-btn close"></div>
+        <div class="window-btn minimize"></div>
+        <div class="window-btn maximize"></div>
+      </div>
       <span class="window-title">Terminal — zsh</span>
     </div>
     <div class="terminal-content">
@@ -598,33 +1066,416 @@
     </div>
   </div>
 
+  <!-- Chrome Window -->
+  <div class="window" id="window-chrome" style="top: 80px; left: 120px; width: 700px;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-btn close"></div>
+        <div class="window-btn minimize"></div>
+        <div class="window-btn maximize"></div>
+      </div>
+      <span class="window-title">Google Chrome</span>
+    </div>
+    <div class="browser-toolbar">
+      <button class="browser-nav-btn">←</button>
+      <button class="browser-nav-btn">→</button>
+      <button class="browser-nav-btn">↻</button>
+      <div class="browser-url-bar">
+        <span>🔒</span>&nbsp;&nbsp;apoorv.dev
+      </div>
+    </div>
+    <div class="browser-content">
+      <div style="text-align: center; padding: 40px;">
+        <div style="font-size: 48px; margin-bottom: 16px;">👋</div>
+        <div style="font-size: 24px; font-weight: 600;">Welcome to my Portfolio</div>
+        <div style="color: #666; margin-top: 8px;">Explore the desktop to learn more about me</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Messages Window -->
+  <div class="window" id="window-messages" style="top: 100px; left: 80px; width: 600px;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-btn close"></div>
+        <div class="window-btn minimize"></div>
+        <div class="window-btn maximize"></div>
+      </div>
+      <span class="window-title">Messages</span>
+    </div>
+    <div class="messages-container">
+      <div class="messages-sidebar">
+        <div class="message-contact">
+          <div class="contact-avatar">A</div>
+          <div class="contact-info">
+            <div class="contact-name">Alex</div>
+            <div class="contact-preview">Hey! How's the project?</div>
+          </div>
+        </div>
+        <div class="message-contact">
+          <div class="contact-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">S</div>
+          <div class="contact-info">
+            <div class="contact-name">Sarah</div>
+            <div class="contact-preview">Thanks for the help!</div>
+          </div>
+        </div>
+      </div>
+      <div class="messages-main">
+        <div class="messages-area">
+          <div class="message-bubble received">Hey! How's the project going?</div>
+          <div class="message-bubble sent">Going great! Almost done with the UI.</div>
+          <div class="message-bubble received">Awesome! Can't wait to see it 🎉</div>
+          <div class="message-bubble sent">I'll share a preview soon!</div>
+        </div>
+        <div class="message-input">
+          <input type="text" placeholder="iMessage">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mail Window -->
+  <div class="window" id="window-mail" style="top: 90px; left: 150px; width: 700px;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-btn close"></div>
+        <div class="window-btn minimize"></div>
+        <div class="window-btn maximize"></div>
+      </div>
+      <span class="window-title">Mail</span>
+    </div>
+    <div class="mail-container">
+      <div class="mail-sidebar">
+        <div class="mail-folder active">📥 Inbox <span class="mail-badge">3</span></div>
+        <div class="mail-folder">⭐ Starred</div>
+        <div class="mail-folder">📤 Sent</div>
+        <div class="mail-folder">📝 Drafts</div>
+        <div class="mail-folder">🗑️ Trash</div>
+      </div>
+      <div class="mail-list">
+        <div class="mail-item">
+          <div class="mail-sender">GitHub</div>
+          <div class="mail-subject">Your pull request was merged</div>
+          <div class="mail-preview">Congratulations! Your PR #42 has been merged into main...</div>
+        </div>
+        <div class="mail-item">
+          <div class="mail-sender">LinkedIn</div>
+          <div class="mail-subject">New connection request</div>
+          <div class="mail-preview">John Doe wants to connect with you...</div>
+        </div>
+        <div class="mail-item">
+          <div class="mail-sender">Vercel</div>
+          <div class="mail-subject">Deployment successful</div>
+          <div class="mail-preview">Your project has been deployed to production...</div>
+        </div>
+      </div>
+      <div class="mail-content">
+        <div style="color: rgba(255,255,255,0.5); text-align: center; padding-top: 80px;">
+          Select an email to read
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spotify Window -->
+  <div class="window" id="window-spotify" style="top: 110px; left: 200px; width: 450px;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-btn close"></div>
+        <div class="window-btn minimize"></div>
+        <div class="window-btn maximize"></div>
+      </div>
+      <span class="window-title">Spotify</span>
+    </div>
+    <div class="spotify-container">
+      <div class="spotify-now-playing">
+        <div class="spotify-album-art">🎵</div>
+        <div class="spotify-track-info">
+          <div class="spotify-track-name">Coding Mode</div>
+          <div class="spotify-artist">Lo-Fi Beats</div>
+        </div>
+      </div>
+      <div class="spotify-progress">
+        <div class="spotify-progress-bar"></div>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px;">
+        <span>1:24</span>
+        <span>3:45</span>
+      </div>
+      <div class="spotify-controls">
+        <button class="spotify-btn">⏮</button>
+        <button class="spotify-btn play">▶</button>
+        <button class="spotify-btn">⏭</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notes Window -->
+  <div class="window" id="window-notes" style="top: 70px; left: 180px; width: 550px;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-btn close"></div>
+        <div class="window-btn minimize"></div>
+        <div class="window-btn maximize"></div>
+      </div>
+      <span class="window-title">Notes</span>
+    </div>
+    <div style="display: flex; height: 300px;">
+      <div class="notes-sidebar">
+        <div class="notes-item active">
+          <div class="notes-title">Project Ideas</div>
+          <div class="notes-preview">Build a macOS portfolio...</div>
+        </div>
+        <div class="notes-item">
+          <div class="notes-title">Todo List</div>
+          <div class="notes-preview">1. Finish portfolio 2. Update...</div>
+        </div>
+        <div class="notes-item">
+          <div class="notes-title">Meeting Notes</div>
+          <div class="notes-preview">Discussed new features...</div>
+        </div>
+      </div>
+      <div class="notes-main">
+        <h2 style="color: white; font-size: 20px; margin-bottom: 12px;">Project Ideas</h2>
+        <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">
+          Build a macOS-style portfolio website<br><br>
+          Features:<br>
+          • Interactive desktop interface<br>
+          • Functional windows with minimize/maximize<br>
+          • Dock with app launching<br>
+          • Multiple app previews<br><br>
+          Status: In Progress ✨
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VS Code Window -->
+  <div class="window" id="window-vscode" style="top: 50px; left: 100px; width: 700px;">
+    <div class="window-titlebar" style="background: #323233;">
+      <div class="window-controls">
+        <div class="window-btn close"></div>
+        <div class="window-btn minimize"></div>
+        <div class="window-btn maximize"></div>
+      </div>
+      <span class="window-title">Visual Studio Code</span>
+    </div>
+    <div class="vscode-container">
+      <div class="vscode-sidebar">
+        <div class="vscode-sidebar-icon active">📁</div>
+        <div class="vscode-sidebar-icon">🔍</div>
+        <div class="vscode-sidebar-icon">🔀</div>
+        <div class="vscode-sidebar-icon">🐛</div>
+        <div class="vscode-sidebar-icon">📦</div>
+      </div>
+      <div class="vscode-explorer">
+        <div class="vscode-explorer-header">Explorer</div>
+        <div class="vscode-file">📁 src</div>
+        <div class="vscode-file" style="padding-left: 36px;">📄 App.tsx</div>
+        <div class="vscode-file" style="padding-left: 36px;">📄 index.ts</div>
+        <div class="vscode-file">📁 components</div>
+        <div class="vscode-file">📄 package.json</div>
+        <div class="vscode-file">📄 README.md</div>
+      </div>
+      <div class="vscode-editor">
+        <span class="code-keyword">import</span> React <span class="code-keyword">from</span> <span class="code-string">'react'</span>;<br><br>
+        <span class="code-keyword">const</span> <span class="code-function">Portfolio</span> = () => {<br>
+        &nbsp;&nbsp;<span class="code-keyword">return</span> (<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div className=<span class="code-string">"app"</span>&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Welcome&lt;/h1&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// More components here</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+        &nbsp;&nbsp;);<br>
+        };<br><br>
+        <span class="code-keyword">export default</span> Portfolio;
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Window -->
+  <div class="window" id="window-settings" style="top: 80px; left: 160px; width: 650px;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-btn close"></div>
+        <div class="window-btn minimize"></div>
+        <div class="window-btn maximize"></div>
+      </div>
+      <span class="window-title">System Settings</span>
+    </div>
+    <div class="settings-container">
+      <div class="settings-sidebar">
+        <div class="settings-item active">
+          <div class="settings-icon" style="background: linear-gradient(135deg, #5AC8FA, #007AFF);">⚙️</div>
+          General
+        </div>
+        <div class="settings-item">
+          <div class="settings-icon" style="background: linear-gradient(135deg, #FF9500, #FF5E3A);">🖥️</div>
+          Appearance
+        </div>
+        <div class="settings-item">
+          <div class="settings-icon" style="background: linear-gradient(135deg, #4CD964, #00C853);">🔔</div>
+          Notifications
+        </div>
+        <div class="settings-item">
+          <div class="settings-icon" style="background: linear-gradient(135deg, #FF2D55, #FF3B30);">🔒</div>
+          Privacy
+        </div>
+      </div>
+      <div class="settings-main">
+        <div class="settings-section-title">General</div>
+        <div class="settings-option">
+          <span class="settings-option-label">Dark Mode</span>
+          <div class="toggle-switch on"></div>
+        </div>
+        <div class="settings-option">
+          <span class="settings-option-label">Notifications</span>
+          <div class="toggle-switch on"></div>
+        </div>
+        <div class="settings-option">
+          <span class="settings-option-label">Auto-update</span>
+          <div class="toggle-switch"></div>
+        </div>
+        <div class="settings-option">
+          <span class="settings-option-label">Sound Effects</span>
+          <div class="toggle-switch on"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Me Window -->
+  <div class="window" id="window-about" style="top: 70px; left: 140px; width: 500px;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-btn close"></div>
+        <div class="window-btn minimize"></div>
+        <div class="window-btn maximize"></div>
+      </div>
+      <span class="window-title">About Me</span>
+    </div>
+    <div class="info-window">
+      <div class="info-header">
+        <div class="info-avatar">👨‍💻</div>
+        <div>
+          <div class="info-name">Apoorv Darshan</div>
+          <div class="info-title">Full Stack Developer</div>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">About</div>
+        <div class="info-text">
+          Passionate developer creating beautiful and functional web experiences.
+          I love building products that make a difference and exploring new technologies.
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">Skills</div>
+        <div class="info-text">
+          React • TypeScript • Node.js • Python • AWS • Docker
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Experience Window -->
+  <div class="window" id="window-experience" style="top: 60px; left: 120px; width: 550px;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-btn close"></div>
+        <div class="window-btn minimize"></div>
+        <div class="window-btn maximize"></div>
+      </div>
+      <span class="window-title">Experience</span>
+    </div>
+    <div class="info-window" style="max-height: 400px; overflow-y: auto;">
+      <div class="experience-item">
+        <div class="experience-role">Senior Software Engineer</div>
+        <div class="experience-company">Tech Company Inc.</div>
+        <div class="experience-date">2022 - Present</div>
+      </div>
+      <div class="experience-item">
+        <div class="experience-role">Full Stack Developer</div>
+        <div class="experience-company">Startup Labs</div>
+        <div class="experience-date">2020 - 2022</div>
+      </div>
+      <div class="experience-item">
+        <div class="experience-role">Frontend Developer</div>
+        <div class="experience-company">Digital Agency</div>
+        <div class="experience-date">2018 - 2020</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resume Window -->
+  <div class="window" id="window-resume" style="top: 50px; left: 100px; width: 500px;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-btn close"></div>
+        <div class="window-btn minimize"></div>
+        <div class="window-btn maximize"></div>
+      </div>
+      <span class="window-title">Resume.pdf</span>
+    </div>
+    <div style="background: #525659; padding: 20px; min-height: 350px; display: flex; align-items: center; justify-content: center;">
+      <div style="background: white; width: 90%; height: 300px; border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #333;">
+        <div style="font-size: 48px; margin-bottom: 16px;">📄</div>
+        <div style="font-size: 18px; font-weight: 600;">Resume</div>
+        <div style="color: #666; margin-top: 8px; font-size: 14px;">Apoorv Darshan</div>
+        <button style="margin-top: 20px; padding: 10px 24px; background: #007AFF; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;">
+          Download PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Credits Window -->
+  <div class="window" id="window-credits" style="top: 80px; left: 160px; width: 450px;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-btn close"></div>
+        <div class="window-btn minimize"></div>
+        <div class="window-btn maximize"></div>
+      </div>
+      <span class="window-title">Credits</span>
+    </div>
+    <div class="info-window">
+      <h2 style="color: white; font-size: 20px; margin-bottom: 16px;">Credits & Acknowledgments</h2>
+      <div class="info-text">
+        <p><strong>Design Inspiration:</strong> Apple macOS</p>
+        <p style="margin-top: 12px;"><strong>Icons:</strong> SF Symbols, Custom designs</p>
+        <p style="margin-top: 12px;"><strong>Built with:</strong> HTML, CSS, JavaScript</p>
+        <p style="margin-top: 12px;"><strong>Created by:</strong> Apoorv Darshan</p>
+        <p style="margin-top: 20px; color: rgba(255,255,255,0.5);">Thank you for visiting! ❤️</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Desktop Icons -->
   <div class="desktop" id="desktop">
     <div class="desktop-icons-container">
-      <!-- Desktop Icons Column -->
       <div class="desktop-column">
-        <div class="desktop-icon" data-action="about">
+        <div class="desktop-icon" data-window="about">
           <div class="icon-wrapper">
             <img src="icons/instagram.png" alt="About Me" class="desktop-icon-img">
           </div>
           <span class="icon-label">About Me</span>
         </div>
 
-        <div class="desktop-icon" data-action="experience">
+        <div class="desktop-icon" data-window="experience">
           <div class="icon-wrapper">
             <img src="icons/word.png" alt="Experience" class="desktop-icon-img">
           </div>
           <span class="icon-label">Experience</span>
         </div>
 
-        <div class="desktop-icon" data-action="resume">
+        <div class="desktop-icon" data-window="resume">
           <div class="icon-wrapper">
             <img src="icons/pdf.png" alt="Resume" class="desktop-icon-img">
           </div>
           <span class="icon-label">Resume.pdf</span>
         </div>
 
-        <div class="desktop-icon" data-action="credits">
+        <div class="desktop-icon" data-window="credits">
           <div class="icon-wrapper">
             <img src="icons/notes.png" alt="Credits" class="desktop-icon-img">
           </div>
@@ -647,7 +1498,7 @@
 
         <div class="desktop-icon" data-link="https://cal.com">
           <div class="icon-wrapper">
-            <img src="icons/meet.png" alt="Cal" class="desktop-icon-img">
+            <img src="icons/meet.png" alt="Meet" class="desktop-icon-img">
           </div>
           <span class="icon-label">Meet</span>
         </div>
@@ -660,72 +1511,78 @@
     <div class="dock">
       <div class="dock-item-container">
         <span class="dock-tooltip">Finder</span>
-        <div class="dock-item">
+        <div class="dock-item" data-app="finder">
           <img src="icons/finder.png" alt="Finder">
         </div>
-        <div class="dock-indicator"></div>
+        <div class="dock-indicator active"></div>
       </div>
 
       <div class="dock-item-container">
         <span class="dock-tooltip">Chrome</span>
-        <div class="dock-item">
+        <div class="dock-item" data-app="chrome">
           <img src="icons/chrome.png" alt="Chrome">
         </div>
+        <div class="dock-indicator" id="indicator-chrome"></div>
       </div>
 
       <div class="dock-item-container">
         <span class="dock-tooltip">Messages</span>
-        <div class="dock-item">
+        <div class="dock-item" data-app="messages">
           <img src="icons/messages.png" alt="Messages">
         </div>
+        <div class="dock-indicator" id="indicator-messages"></div>
       </div>
 
       <div class="dock-item-container">
         <span class="dock-tooltip">Mail</span>
-        <div class="dock-item">
+        <div class="dock-item" data-app="mail">
           <img src="icons/mail.png" alt="Mail">
         </div>
+        <div class="dock-indicator" id="indicator-mail"></div>
       </div>
 
       <div class="dock-item-container">
         <span class="dock-tooltip">Spotify</span>
-        <div class="dock-item">
+        <div class="dock-item" data-app="spotify">
           <img src="icons/spotify.png" alt="Spotify">
         </div>
+        <div class="dock-indicator" id="indicator-spotify"></div>
       </div>
 
       <div class="dock-item-container">
         <span class="dock-tooltip">Notes</span>
-        <div class="dock-item">
+        <div class="dock-item" data-app="notes">
           <img src="icons/notes.png" alt="Notes">
         </div>
+        <div class="dock-indicator" id="indicator-notes"></div>
       </div>
 
       <div class="dock-separator"></div>
 
       <div class="dock-item-container">
         <span class="dock-tooltip">VS Code</span>
-        <div class="dock-item">
+        <div class="dock-item" data-app="vscode">
           <img src="icons/vscode.png" alt="VS Code">
         </div>
-        <div class="dock-indicator"></div>
+        <div class="dock-indicator" id="indicator-vscode"></div>
       </div>
 
       <div class="dock-item-container">
         <span class="dock-tooltip">Terminal</span>
-        <div class="dock-item">
+        <div class="dock-item" data-app="terminal">
           <img src="icons/terminal.png" alt="Terminal">
         </div>
-        <div class="dock-indicator"></div>
+        <div class="dock-indicator active" id="indicator-terminal"></div>
       </div>
 
       <div class="dock-separator"></div>
 
       <div class="dock-item-container">
         <span class="dock-tooltip">System Settings</span>
-        <div class="dock-item">
+        <div class="dock-item" data-app="settings">
           <img src="icons/settings.png" alt="Settings">
         </div>
+        <div class="dock-indicator" id="indicator-settings"></div>
       </div>
     </div>
   </div>
@@ -736,19 +1593,158 @@
       const now = new Date();
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
       const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      const day = days[now.getDay()];
-      const month = months[now.getMonth()];
-      const date = now.getDate();
-      let hours = now.getHours();
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-      hours = hours % 12 || 12;
-      document.getElementById('clock').textContent = `${day} ${month} ${date} ${hours}:${minutes} ${ampm}`;
+      document.getElementById('clock').textContent =
+        `${days[now.getDay()]} ${months[now.getMonth()]} ${now.getDate()} ${now.getHours() % 12 || 12}:${now.getMinutes().toString().padStart(2, '0')} ${now.getHours() >= 12 ? 'PM' : 'AM'}`;
     }
     updateClock();
     setInterval(updateClock, 1000);
 
-    // Desktop icons
+    // Window management
+    let zIndex = 10;
+    let activeWindow = null;
+
+    // Get all windows
+    const windows = {
+      terminal: document.getElementById('window-terminal'),
+      chrome: document.getElementById('window-chrome'),
+      messages: document.getElementById('window-messages'),
+      mail: document.getElementById('window-mail'),
+      spotify: document.getElementById('window-spotify'),
+      notes: document.getElementById('window-notes'),
+      vscode: document.getElementById('window-vscode'),
+      settings: document.getElementById('window-settings'),
+      about: document.getElementById('window-about'),
+      experience: document.getElementById('window-experience'),
+      resume: document.getElementById('window-resume'),
+      credits: document.getElementById('window-credits')
+    };
+
+    // App name mapping for menu bar
+    const appNames = {
+      terminal: 'Terminal',
+      chrome: 'Chrome',
+      messages: 'Messages',
+      mail: 'Mail',
+      spotify: 'Spotify',
+      notes: 'Notes',
+      vscode: 'Code',
+      settings: 'System Settings',
+      about: 'About Me',
+      experience: 'Experience',
+      resume: 'Preview',
+      credits: 'Notes'
+    };
+
+    // Focus window
+    function focusWindow(appName) {
+      const win = windows[appName];
+      if (!win) return;
+
+      zIndex++;
+      win.style.zIndex = zIndex;
+
+      // Update active states
+      Object.values(windows).forEach(w => w.classList.remove('focused'));
+      win.classList.add('focused');
+
+      // Update menu bar
+      document.getElementById('menu-app-name').textContent = appNames[appName] || 'Finder';
+      activeWindow = appName;
+    }
+
+    // Open window
+    function openWindow(appName) {
+      const win = windows[appName];
+      if (!win) return;
+
+      win.classList.add('active');
+      win.classList.remove('minimized');
+      focusWindow(appName);
+
+      // Update dock indicator
+      const indicator = document.getElementById(`indicator-${appName}`);
+      if (indicator) indicator.classList.add('active');
+    }
+
+    // Close window
+    function closeWindow(appName) {
+      const win = windows[appName];
+      if (!win) return;
+
+      win.classList.remove('active', 'minimized', 'fullscreen', 'focused');
+
+      // Update dock indicator
+      const indicator = document.getElementById(`indicator-${appName}`);
+      if (indicator) indicator.classList.remove('active');
+
+      // Reset menu bar
+      document.getElementById('menu-app-name').textContent = 'Finder';
+    }
+
+    // Minimize window
+    function minimizeWindow(appName) {
+      const win = windows[appName];
+      if (!win) return;
+      win.classList.add('minimized');
+    }
+
+    // Maximize/restore window
+    function toggleMaximize(appName) {
+      const win = windows[appName];
+      if (!win) return;
+      win.classList.toggle('fullscreen');
+    }
+
+    // Setup window controls for all windows
+    Object.keys(windows).forEach(appName => {
+      const win = windows[appName];
+      if (!win) return;
+
+      const controls = win.querySelector('.window-controls');
+      if (!controls) return;
+
+      const [closeBtn, minBtn, maxBtn] = controls.querySelectorAll('.window-btn');
+
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeWindow(appName);
+      });
+
+      minBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        minimizeWindow(appName);
+      });
+
+      maxBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMaximize(appName);
+      });
+
+      // Click to focus
+      win.addEventListener('mousedown', () => focusWindow(appName));
+    });
+
+    // Dock clicks
+    document.querySelectorAll('.dock-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const appName = item.dataset.app;
+        if (!appName || appName === 'finder') return;
+
+        const win = windows[appName];
+        if (!win) return;
+
+        if (!win.classList.contains('active')) {
+          openWindow(appName);
+        } else if (win.classList.contains('minimized')) {
+          win.classList.remove('minimized');
+          focusWindow(appName);
+        } else {
+          focusWindow(appName);
+        }
+      });
+    });
+
+    // Desktop icon clicks
     let selectedIcon = null;
 
     document.querySelectorAll('.desktop-icon').forEach(icon => {
@@ -761,10 +1757,13 @@
       });
 
       icon.addEventListener('dblclick', () => {
+        const windowName = icon.dataset.window;
         const action = icon.dataset.action;
         const link = icon.dataset.link;
 
-        if (action === 'projects') {
+        if (windowName) {
+          openWindow(windowName);
+        } else if (action === 'projects') {
           window.parent.postMessage('Projects', '*');
         } else if (link) {
           window.open(link, '_blank');
@@ -773,15 +1772,14 @@
       });
     });
 
-    document.querySelectorAll('.desktop-column').forEach(col => {
-      col.addEventListener('click', (e) => {
-        if (e.target.classList.contains('desktop-column')) {
-          if (selectedIcon) {
-            selectedIcon.classList.remove('selected');
-            selectedIcon = null;
-          }
+    // Click desktop to deselect
+    document.getElementById('desktop').addEventListener('click', (e) => {
+      if (e.target.id === 'desktop' || e.target.classList.contains('desktop-column') || e.target.classList.contains('desktop-icons-container')) {
+        if (selectedIcon) {
+          selectedIcon.classList.remove('selected');
+          selectedIcon = null;
         }
-      });
+      }
     });
 
     // Parent events
