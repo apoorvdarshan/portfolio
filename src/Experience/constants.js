@@ -111,7 +111,7 @@ export const RIGHT_MONITOR_CSS_OBJECT_POSITION = new Vector3(
 
 export const RIGHT_MONITOR_CSS_OBJECT_SCALE = new Vector3(0.00102, 0.00102, 1);
 export const RIGHT_MONITOR_CSS_OBJECT_ROTATION_Y = (-7.406 * Math.PI) / 180;
-export const RIGHT_MONITOR_IFRAME_SRC = "https://joan-art-gallery.vercel.app";
+export const RIGHT_MONITOR_IFRAME_SRC = "gallery/index.html";
 export const RIGHT_MONITOR_CAMERA_POSITION = new Vector3(
   2.13997,
   2.60716,
