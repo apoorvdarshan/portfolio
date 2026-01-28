@@ -872,6 +872,8 @@
       align-items: center;
       justify-content: center;
       font-size: 48px;
+      overflow: hidden;
+      flex-shrink: 0;
     }
 
     .spotify-track-info { flex: 1; }
@@ -921,10 +923,11 @@
       background: rgba(255,255,255,0.2);
       border-radius: 2px;
       margin-top: 16px;
+      cursor: pointer;
     }
 
     .spotify-progress-bar {
-      width: 35%;
+      width: 0%;
       height: 100%;
       background: #1DB954;
       border-radius: 2px;
@@ -1222,48 +1225,6 @@
     </div>
   </div>
 
-  <!-- Mail Window -->
-  <div class="window" id="window-mail" style="top: 90px; left: 150px; width: 700px;">
-    <div class="window-titlebar">
-      <div class="window-controls">
-        <div class="window-btn close"></div>
-        <div class="window-btn minimize"></div>
-        <div class="window-btn maximize"></div>
-      </div>
-      <span class="window-title">Mail</span>
-    </div>
-    <div class="mail-container">
-      <div class="mail-sidebar">
-        <div class="mail-folder active">📥 Inbox <span class="mail-badge">3</span></div>
-        <div class="mail-folder">⭐ Starred</div>
-        <div class="mail-folder">📤 Sent</div>
-        <div class="mail-folder">📝 Drafts</div>
-        <div class="mail-folder">🗑️ Trash</div>
-      </div>
-      <div class="mail-list">
-        <div class="mail-item">
-          <div class="mail-sender">GitHub</div>
-          <div class="mail-subject">Your pull request was merged</div>
-          <div class="mail-preview">Congratulations! Your PR #42 has been merged into main...</div>
-        </div>
-        <div class="mail-item">
-          <div class="mail-sender">LinkedIn</div>
-          <div class="mail-subject">New connection request</div>
-          <div class="mail-preview">John Doe wants to connect with you...</div>
-        </div>
-        <div class="mail-item">
-          <div class="mail-sender">Vercel</div>
-          <div class="mail-subject">Deployment successful</div>
-          <div class="mail-preview">Your project has been deployed to production...</div>
-        </div>
-      </div>
-      <div class="mail-content">
-        <div style="color: rgba(255,255,255,0.5); text-align: center; padding-top: 80px;">
-          Select an email to read
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Spotify Window -->
   <div class="window" id="window-spotify" style="top: 110px; left: 200px; width: 450px;">
@@ -1276,24 +1237,27 @@
       <span class="window-title">Spotify</span>
     </div>
     <div class="spotify-container">
+      <audio id="spotify-audio" src="../assets/Cupid.mp3" preload="metadata"></audio>
       <div class="spotify-now-playing">
-        <div class="spotify-album-art">🎵</div>
+        <div class="spotify-album-art">
+          <img src="../assets/cupid.jpeg" alt="Cupid Album Art" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+        </div>
         <div class="spotify-track-info">
-          <div class="spotify-track-name">Coding Mode</div>
-          <div class="spotify-artist">Lo-Fi Beats</div>
+          <div class="spotify-track-name">Cupid - Twin Version</div>
+          <div class="spotify-artist">FIFTY FIFTY</div>
         </div>
       </div>
-      <div class="spotify-progress">
-        <div class="spotify-progress-bar"></div>
+      <div class="spotify-progress" id="spotify-progress-container">
+        <div class="spotify-progress-bar" id="spotify-progress-bar"></div>
       </div>
       <div style="display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px;">
-        <span>1:24</span>
-        <span>3:45</span>
+        <span id="spotify-current-time">0:00</span>
+        <span id="spotify-duration">0:00</span>
       </div>
       <div class="spotify-controls">
-        <button class="spotify-btn">⏮</button>
-        <button class="spotify-btn play">▶</button>
-        <button class="spotify-btn">⏭</button>
+        <button class="spotify-btn" id="spotify-prev">⏮</button>
+        <button class="spotify-btn play" id="spotify-play">▶</button>
+        <button class="spotify-btn" id="spotify-next">⏭</button>
       </div>
     </div>
   </div>
@@ -1604,10 +1568,9 @@
 
       <div class="dock-item-container">
         <span class="dock-tooltip">Mail</span>
-        <div class="dock-item" data-app="mail">
+        <div class="dock-item" data-link="mailto:ad13dtu@gmail.com">
           <img src="icons/mail.png" alt="Mail">
         </div>
-        <div class="dock-indicator" id="indicator-mail"></div>
       </div>
 
       <div class="dock-item-container">
@@ -1668,7 +1631,6 @@
     const windows = {
       terminal: document.getElementById('window-terminal'),
       messages: document.getElementById('window-messages'),
-      mail: document.getElementById('window-mail'),
       spotify: document.getElementById('window-spotify'),
       notes: document.getElementById('window-notes'),
       vscode: document.getElementById('window-vscode'),
@@ -1682,7 +1644,6 @@
     const appNames = {
       terminal: 'Terminal',
       messages: 'Messages',
-      mail: 'Mail',
       spotify: 'Spotify',
       notes: 'Notes',
       vscode: 'Code',
@@ -1786,6 +1747,14 @@
     document.querySelectorAll('.dock-item').forEach(item => {
       item.addEventListener('click', () => {
         const appName = item.dataset.app;
+        const link = item.dataset.link;
+
+        // Handle external links (including mailto)
+        if (link) {
+          window.open(link, '_blank');
+          return;
+        }
+
         if (!appName || appName === 'finder') return;
 
         const win = windows[appName];
@@ -1895,6 +1864,57 @@
     // Parent events
     document.addEventListener('mousedown', () => window.parent.postMessage('mousedown', '*'));
     document.addEventListener('mouseup', () => window.parent.postMessage('mouseup', '*'));
+
+    // Spotify Player
+    const spotifyAudio = document.getElementById('spotify-audio');
+    const spotifyPlayBtn = document.getElementById('spotify-play');
+    const spotifyProgressBar = document.getElementById('spotify-progress-bar');
+    const spotifyProgressContainer = document.getElementById('spotify-progress-container');
+    const spotifyCurrentTime = document.getElementById('spotify-current-time');
+    const spotifyDuration = document.getElementById('spotify-duration');
+    let isPlaying = false;
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    spotifyAudio.addEventListener('loadedmetadata', () => {
+      spotifyDuration.textContent = formatTime(spotifyAudio.duration);
+    });
+
+    spotifyAudio.addEventListener('timeupdate', () => {
+      const progress = (spotifyAudio.currentTime / spotifyAudio.duration) * 100;
+      spotifyProgressBar.style.width = `${progress}%`;
+      spotifyCurrentTime.textContent = formatTime(spotifyAudio.currentTime);
+    });
+
+    spotifyAudio.addEventListener('ended', () => {
+      isPlaying = false;
+      spotifyPlayBtn.textContent = '▶';
+      spotifyProgressBar.style.width = '0%';
+      spotifyCurrentTime.textContent = '0:00';
+    });
+
+    spotifyPlayBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        spotifyAudio.pause();
+        spotifyPlayBtn.textContent = '▶';
+      } else {
+        spotifyAudio.play();
+        spotifyPlayBtn.textContent = '⏸';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    spotifyProgressContainer.addEventListener('click', (e) => {
+      const rect = spotifyProgressContainer.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
+      const percent = clickX / width;
+      spotifyAudio.currentTime = percent * spotifyAudio.duration;
+    });
   </script>
 </body>
 </html>
