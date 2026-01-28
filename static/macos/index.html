@@ -1068,22 +1068,17 @@
     }
 
     .word-document-area {
-      background: #525659;
-      padding: 20px 40px;
-      min-height: 400px;
+      background: white;
       flex: 1;
-      display: flex;
-      justify-content: center;
       overflow-y: auto;
     }
 
     .word-page {
       width: 100%;
       max-width: 800px;
-      min-height: 500px;
+      margin: 0 auto;
       background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      padding: 40px 50px;
+      padding: 40px 50px 80px 50px;
       color: #333;
       font-family: 'Calibri', 'Segoe UI', sans-serif;
       font-size: 14px;
@@ -1430,7 +1425,7 @@
   </div>
 
   <!-- Experience Window (Word-style) -->
-  <div class="window" id="window-experience" style="top: 60px; left: 120px; width: 650px;">
+  <div class="window" id="window-experience" style="top: 60px; left: 120px; width: 650px; height: 500px;">
     <div class="window-titlebar" style="background: #2b579a;">
       <div class="window-controls">
         <div class="window-btn close"></div>
@@ -1463,7 +1458,59 @@
     <!-- Word Document Area -->
     <div class="word-document-area">
       <div class="word-page">
-        <!-- Blank page content will go here -->
+        <h1 style="font-size: 24px; font-weight: bold; margin-bottom: 24px; color: #1a1a1a;">Experience</h1>
+
+        <div style="margin-bottom: 24px;">
+          <div style="font-size: 16px; font-weight: bold; color: #1a1a1a;">XIRCLS</div>
+          <div style="font-size: 13px; color: #666;">Internship · 3 mos</div>
+          <div style="font-size: 13px; color: #666; margin-bottom: 12px;">Mumbai, Maharashtra, India · Remote</div>
+
+          <div style="margin-left: 16px; margin-bottom: 16px;">
+            <div style="font-size: 14px; font-weight: 600; color: #333;">Full Stack Developer</div>
+            <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Jan 2026 - Present · 1 mo</div>
+            <ul style="font-size: 13px; color: #444; margin: 0; padding-left: 20px; line-height: 1.6;">
+              <li>Developed Reminders and Interactions end to end with CRUD, pagination, filtering, soft delete, and restore.</li>
+              <li>Fixed critical security and data integrity issues, including session cache leakage and ownership validation gaps.</li>
+              <li>Added user-scoped uniqueness validation for leads and accounts (email, phone, website).</li>
+              <li>Improved real-time UI updates and detail pages using React Query cache invalidation.</li>
+              <li>Served as project lead intern, overseeing work of 5 interns.</li>
+            </ul>
+          </div>
+
+          <div style="margin-left: 16px;">
+            <div style="font-size: 14px; font-weight: 600; color: #333;">Frontend Developer</div>
+            <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Nov 2025 - Jan 2026 · 3 mos</div>
+            <ul style="font-size: 13px; color: #444; margin: 0; padding-left: 20px; line-height: 1.6;">
+              <li>Built and stabilized core CRM features for Leads, Accounts, Authentication, and Interactions.</li>
+              <li>Integrated frontend with backend APIs, fixing schema mismatches, UUID handling, and auth-related issues.</li>
+              <li>Implemented strong form validation and UX flows, including mandatory fields, auto tab-switching, and cleaner save actions.</li>
+              <li>Improved frontend structure, environment configuration, and overall responsiveness across dashboards.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <div style="font-size: 16px; font-weight: bold; color: #1a1a1a;">AI Trainer</div>
+          <div style="font-size: 13px; color: #666;">Soul AI · Part-time</div>
+          <div style="font-size: 12px; color: #666;">Apr 2025 - Apr 2025 · 1 mo</div>
+          <div style="font-size: 13px; color: #666; margin-bottom: 8px;">Hyderabad, Telangana, India · Remote</div>
+          <p style="font-size: 13px; color: #444; margin: 0; line-height: 1.6;">Evaluated educational conversations from Gemini 2.5 Pro (Experimental) and ChatGPT-4o under Project Ceres</p>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <div style="font-size: 16px; font-weight: bold; color: #1a1a1a;">AI Trainer</div>
+          <div style="font-size: 13px; color: #666;">Outlier · Freelance</div>
+          <div style="font-size: 12px; color: #666;">Feb 2025 - Mar 2025 · 2 mos</div>
+          <div style="font-size: 13px; color: #666; margin-bottom: 8px;">San Francisco, California, United States · Remote</div>
+          <ul style="font-size: 13px; color: #444; margin: 0; padding-left: 20px; line-height: 1.6;">
+            <li>Supervised AI function-calling processes and tool use in projects like Attenuation Stamp</li>
+            <li>Improved AI reasoning capabilities across multiple domains, including STEM and philosophy, in Mail Valley</li>
+            <li>Designed complex image-based questions to challenge AI models and analyzed responses in Mighty Moo</li>
+            <li>Conducted preference evaluations and ranked AI model outputs as part of Pro Evals</li>
+            <li>Developed the Gallon Hamster, a multi-discipline multimodal reasoning system (SFT Phase 2)</li>
+            <li>Identified platform issues and provided critical feedback during Nanoparticle Baobab and Normal Sultan</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
