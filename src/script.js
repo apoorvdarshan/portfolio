@@ -1,5 +1,9 @@
 import "./style.css";
 import Experience from "./Experience/Experience.js";
+import { inject } from "@vercel/analytics";
+
+// Initialize Vercel Analytics
+inject();
 
 const isMobile =
   /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
