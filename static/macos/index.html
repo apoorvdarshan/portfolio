@@ -767,43 +767,194 @@
 
     .toggle-switch.on::after { transform: translateX(16px); }
 
-    /* About Me / Experience / Credits */
+    /* Instagram Feed Style */
+    .instagram-container {
+      background: #000;
+      color: #fff;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .ig-navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-bottom: 1px solid #262626;
+    }
+
+    .ig-logo {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    .ig-nav-icons {
+      display: flex;
+      gap: 20px;
+      font-size: 20px;
+    }
+
+    .ig-feed {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .ig-post {
+      border-bottom: 1px solid #262626;
+    }
+
+    .ig-post-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+    }
+
+    .ig-post-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ig-post-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      padding: 2px;
+    }
+
+    .ig-post-avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid #000;
+      object-fit: cover;
+    }
+
+    .ig-post-username {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .ig-post-location {
+      font-size: 12px;
+      color: #a8a8a8;
+    }
+
+    .ig-post-menu {
+      font-size: 16px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .ig-post-image {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ig-post-actions {
+      display: flex;
+      align-items: center;
+      padding: 12px 14px 8px;
+      gap: 16px;
+    }
+
+    .ig-action {
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    .ig-action:hover {
+      transform: scale(1.1);
+    }
+
+    .ig-action-save {
+      margin-left: auto;
+    }
+
+    .ig-post-likes {
+      padding: 0 14px 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .ig-post-caption {
+      padding: 0 14px 8px;
+      font-size: 14px;
+      line-height: 1.5;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .ig-post-caption::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .ig-post-caption::-webkit-scrollbar-thumb {
+      background: #363636;
+      border-radius: 2px;
+    }
+
+    .ig-caption-user {
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    .ig-caption-more {
+      color: #a8a8a8;
+      cursor: pointer;
+    }
+
+    .ig-hashtag {
+      color: #e0f1ff;
+    }
+
+    .ig-post-comments {
+      padding: 0 14px 8px;
+      font-size: 14px;
+      color: #a8a8a8;
+      cursor: pointer;
+    }
+
+    .ig-post-time {
+      padding: 0 14px 14px;
+      font-size: 10px;
+      color: #a8a8a8;
+      text-transform: uppercase;
+    }
+
+    .ig-bottom-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 12px 0;
+      border-top: 1px solid #262626;
+      font-size: 24px;
+    }
+
+    .ig-bottom-nav span {
+      cursor: pointer;
+    }
+
+    /* Scrollbar for Instagram feed */
+    .ig-feed::-webkit-scrollbar {
+      width: 0;
+    }
+
+    /* Experience / Credits (non-Instagram) */
     .info-window {
       padding: 24px;
       color: rgba(255,255,255,0.9);
       flex: 1;
       overflow-y: auto;
-    }
-
-    .info-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .info-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      color: white;
-    }
-
-    .info-name {
-      font-size: 24px;
-      font-weight: 600;
-      color: white;
-    }
-
-    .info-title {
-      font-size: 14px;
-      color: rgba(255,255,255,0.6);
-      margin-top: 4px;
     }
 
     .info-section {
@@ -1390,36 +1541,127 @@
     </div>
   </div>
 
-  <!-- About Me Window -->
-  <div class="window" id="window-about" style="top: 70px; left: 140px; width: 500px;">
+  <!-- About Me Window (Instagram Feed) -->
+  <div class="window" id="window-about" style="top: 70px; left: 140px; width: 420px; height: 600px;">
     <div class="window-titlebar">
       <div class="window-controls">
         <div class="window-btn close"></div>
         <div class="window-btn minimize"></div>
         <div class="window-btn maximize"></div>
       </div>
-      <span class="window-title">About Me</span>
+      <span class="window-title">Instagram</span>
     </div>
-    <div class="info-window">
-      <div class="info-header">
-        <div class="info-avatar">👨‍💻</div>
-        <div>
-          <div class="info-name">Apoorv Darshan</div>
-          <div class="info-title">Full Stack Developer</div>
+    <div class="instagram-container">
+      <div class="ig-navbar">
+        <div class="ig-logo">Instagram</div>
+        <div class="ig-nav-icons">
+          <span>♡</span>
+          <span>✉</span>
         </div>
       </div>
-      <div class="info-section">
-        <div class="info-section-title">About</div>
-        <div class="info-text">
-          Passionate developer creating beautiful and functional web experiences.
-          I love building products that make a difference and exploring new technologies.
+      <div class="ig-feed">
+        <!-- About Me Post -->
+        <div class="ig-post">
+          <div class="ig-post-header">
+            <div class="ig-post-user">
+              <div class="ig-post-avatar">
+                <img src="../assets/pfp.jpg" alt="Profile">
+              </div>
+              <div>
+                <div class="ig-post-username">apoorvdarshan</div>
+              </div>
+            </div>
+            <div class="ig-post-menu">•••</div>
+          </div>
+          <img class="ig-post-image" src="../assets/pfp.jpg" alt="Apoorv Darshan">
+          <div class="ig-post-actions">
+            <span class="ig-action">♡</span>
+            <span class="ig-action">💬</span>
+            <span class="ig-action">➤</span>
+            <span class="ig-action ig-action-save">⚐</span>
+          </div>
+          <div class="ig-post-likes">1,247 likes</div>
+          <div class="ig-post-caption">
+            <span class="ig-caption-user">apoorvdarshan</span>
+
+Hey! I'm Apoorv Darshan
+Full Stack Developer
+
+Passionate about building beautiful, functional web experiences that make a difference.
+
+───────────────────
+
+Education
+
+  • University of the People
+    B.S. Computer Science
+    CGPA: 3.83/4.00 | Jun 2025
+
+  • Delhi Technological University
+    B.Tech Electrical Engineering
+    Dropout
+
+  • Dhruva Public School, New Delhi
+    CBSE 12th - Mathematics
+    Grade: 85.4%
+
+  • Jyoti School Jayant, MP
+    CBSE 10th
+    Grade: 94.8%
+
+───────────────────
+
+Skills
+
+  • Frontend
+    React JS, TypeScript, Redux, Tailwind CSS, Bootstrap, HTML/CSS/JS, EJS
+
+  • Backend
+    Node.js, Express.js, Python
+
+  • Database
+    MongoDB, PostgreSQL
+
+  • Tools
+    Git, GitHub, CLI, Claude Code, UI/UX
+
+───────────────────
+
+Recognition
+
+  • Diamond Badge on CodeChef
+
+  • LOR for outstanding performance in CS & Math from UoPeople professors
+
+  • ACE-CPT + US REPS (NCCA-accredited)
+
+  • JEE 2023 - Top 1.5% candidates
+
+  • IOQM qualified + RMO appeared
+    Top 300 at state level
+
+  • Built YouTube channel to 20K+ subscribers at 16, earned $1000+, sold it
+
+  • 7K+ subscribers on LinkedIn
+
+───────────────────
+
+Interests
+
+  • Gym when not coding
+
+───────────────────
+          </div>
+          <div class="ig-post-comments">View all 42 comments</div>
+          <div class="ig-post-time">2 hours ago</div>
         </div>
       </div>
-      <div class="info-section">
-        <div class="info-section-title">Skills</div>
-        <div class="info-text">
-          React • TypeScript • Node.js • Python • AWS • Docker
-        </div>
+      <div class="ig-bottom-nav">
+        <span>⌂</span>
+        <span>⌕</span>
+        <span>⊕</span>
+        <span>▶</span>
+        <span style="font-size: 18px;">●</span>
       </div>
     </div>
   </div>
