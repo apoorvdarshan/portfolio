@@ -407,7 +407,7 @@ export default class Navigation {
         window.open(GITHUB_URL);
         break;
       case "itchio":
-        window.open(ITCHIO_URL);
+        // Disabled
         break;
     }
   };
