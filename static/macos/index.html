@@ -1181,33 +1181,6 @@
     </div>
   </div>
 
-  <!-- Chrome Window -->
-  <div class="window" id="window-chrome" style="top: 80px; left: 120px; width: 700px;">
-    <div class="window-titlebar">
-      <div class="window-controls">
-        <div class="window-btn close"></div>
-        <div class="window-btn minimize"></div>
-        <div class="window-btn maximize"></div>
-      </div>
-      <span class="window-title">Google Chrome</span>
-    </div>
-    <div class="browser-toolbar">
-      <button class="browser-nav-btn">←</button>
-      <button class="browser-nav-btn">→</button>
-      <button class="browser-nav-btn">↻</button>
-      <div class="browser-url-bar">
-        <span>🔒</span>&nbsp;&nbsp;apoorv.dev
-      </div>
-    </div>
-    <div class="browser-content">
-      <div style="text-align: center; padding: 40px;">
-        <div style="font-size: 48px; margin-bottom: 16px;">👋</div>
-        <div style="font-size: 24px; font-weight: 600;">Welcome to my Portfolio</div>
-        <div style="color: #666; margin-top: 8px;">Explore the desktop to learn more about me</div>
-      </div>
-    </div>
-  </div>
-
   <!-- Messages Window -->
   <div class="window" id="window-messages" style="top: 100px; left: 80px; width: 600px;">
     <div class="window-titlebar">
@@ -1221,16 +1194,16 @@
     <div class="messages-container">
       <div class="messages-sidebar">
         <div class="message-contact">
-          <div class="contact-avatar">A</div>
+          <div class="contact-avatar">V</div>
           <div class="contact-info">
-            <div class="contact-name">Alex</div>
+            <div class="contact-name">Vansh</div>
             <div class="contact-preview">Hey! How's the project?</div>
           </div>
         </div>
         <div class="message-contact">
-          <div class="contact-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">S</div>
+          <div class="contact-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">A</div>
           <div class="contact-info">
-            <div class="contact-name">Sarah</div>
+            <div class="contact-name">Aaru</div>
             <div class="contact-preview">Thanks for the help!</div>
           </div>
         </div>
@@ -1622,14 +1595,6 @@
       </div>
 
       <div class="dock-item-container">
-        <span class="dock-tooltip">Chrome</span>
-        <div class="dock-item" data-app="chrome">
-          <img src="icons/chrome.png" alt="Chrome">
-        </div>
-        <div class="dock-indicator" id="indicator-chrome"></div>
-      </div>
-
-      <div class="dock-item-container">
         <span class="dock-tooltip">Messages</span>
         <div class="dock-item" data-app="messages">
           <img src="icons/messages.png" alt="Messages">
@@ -1651,14 +1616,6 @@
           <img src="icons/spotify.png" alt="Spotify">
         </div>
         <div class="dock-indicator" id="indicator-spotify"></div>
-      </div>
-
-      <div class="dock-item-container">
-        <span class="dock-tooltip">Notes</span>
-        <div class="dock-item" data-app="notes">
-          <img src="icons/notes.png" alt="Notes">
-        </div>
-        <div class="dock-indicator" id="indicator-notes"></div>
       </div>
 
       <div class="dock-separator"></div>
@@ -1710,7 +1667,6 @@
     // Get all windows
     const windows = {
       terminal: document.getElementById('window-terminal'),
-      chrome: document.getElementById('window-chrome'),
       messages: document.getElementById('window-messages'),
       mail: document.getElementById('window-mail'),
       spotify: document.getElementById('window-spotify'),
@@ -1725,7 +1681,6 @@
     // App name mapping for menu bar
     const appNames = {
       terminal: 'Terminal',
-      chrome: 'Chrome',
       messages: 'Messages',
       mail: 'Mail',
       spotify: 'Spotify',
