@@ -314,10 +314,16 @@
       overflow: hidden;
       display: none;
       z-index: 10;
+      display: none;
+      flex-direction: column;
     }
 
     .window.active {
-      display: block;
+      display: flex;
+    }
+
+    .window.active {
+      display: flex;
       transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
@@ -331,7 +337,8 @@
       top: 25px !important;
       left: 0 !important;
       width: 100% !important;
-      height: calc(100vh - 85px) !important;
+      height: calc(100vh - 95px) !important;
+      max-height: calc(100vh - 95px) !important;
       border-radius: 0;
     }
 
@@ -344,7 +351,11 @@
       align-items: center;
       padding: 0 12px;
       gap: 8px;
-      cursor: default;
+      cursor: grab;
+    }
+
+    .window-titlebar:active {
+      cursor: grabbing;
     }
 
     .window-controls {
@@ -380,6 +391,9 @@
       font-size: 13px;
       line-height: 1.5;
       overflow: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Terminal specific */
@@ -389,6 +403,8 @@
       padding: 12px;
       background: rgba(0,0,0,0.3);
       min-height: 250px;
+      flex: 1;
+      overflow-y: auto;
     }
 
     .terminal-prompt { color: #32D74B; }
@@ -446,6 +462,7 @@
     .browser-content {
       background: #fff;
       min-height: 300px;
+      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -453,6 +470,12 @@
     }
 
     /* Notes */
+    .notes-container {
+      display: flex;
+      flex: 1;
+      min-height: 300px;
+    }
+
     .notes-sidebar {
       width: 200px;
       background: rgba(40,40,45,0.95);
@@ -463,6 +486,7 @@
       flex: 1;
       padding: 16px;
       background: rgba(30,30,35,0.95);
+      overflow-y: auto;
     }
 
     .notes-item {
@@ -489,7 +513,8 @@
     /* Messages */
     .messages-container {
       display: flex;
-      height: 350px;
+      flex: 1;
+      min-height: 350px;
     }
 
     .messages-sidebar {
@@ -503,6 +528,7 @@
       display: flex;
       flex-direction: column;
       background: rgba(30,30,35,0.95);
+      overflow: hidden;
     }
 
     .message-contact {
@@ -537,6 +563,7 @@
       flex: 1;
       padding: 16px;
       overflow-y: auto;
+      min-height: 0;
     }
 
     .message-bubble {
@@ -581,7 +608,8 @@
     /* VS Code */
     .vscode-container {
       display: flex;
-      height: 350px;
+      flex: 1;
+      min-height: 350px;
     }
 
     .vscode-sidebar {
@@ -643,6 +671,7 @@
       padding: 12px;
       color: rgba(255,255,255,0.9);
       line-height: 1.6;
+      overflow-y: auto;
     }
 
     .code-keyword { color: #C586C0; }
@@ -654,7 +683,8 @@
     /* Settings */
     .settings-container {
       display: flex;
-      height: 350px;
+      flex: 1;
+      min-height: 350px;
     }
 
     .settings-sidebar {
@@ -689,6 +719,7 @@
       flex: 1;
       padding: 20px;
       background: rgba(30,30,35,0.95);
+      overflow-y: auto;
     }
 
     .settings-section-title {
@@ -740,6 +771,8 @@
     .info-window {
       padding: 24px;
       color: rgba(255,255,255,0.9);
+      flex: 1;
+      overflow-y: auto;
     }
 
     .info-header {
@@ -820,6 +853,7 @@
       background: linear-gradient(180deg, #1a1a2e 0%, #121212 100%);
       min-height: 300px;
       padding: 20px;
+      flex: 1;
     }
 
     .spotify-now-playing {
@@ -899,7 +933,8 @@
     /* Mail */
     .mail-container {
       display: flex;
-      height: 350px;
+      flex: 1;
+      min-height: 350px;
     }
 
     .mail-sidebar {
@@ -970,6 +1005,86 @@
       flex: 1;
       padding: 20px;
       background: rgba(30,30,35,0.95);
+      overflow-y: auto;
+    }
+
+    /* Word-style Document */
+    .word-toolbar {
+      background: #2b579a;
+      border-bottom: 1px solid #1e3f73;
+    }
+
+    .word-toolbar-tabs {
+      display: flex;
+      padding: 0 8px;
+      background: #1e4a8a;
+    }
+
+    .word-tab {
+      padding: 6px 16px;
+      color: rgba(255,255,255,0.8);
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .word-tab:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .word-tab.active {
+      background: #2b579a;
+      color: white;
+    }
+
+    .word-toolbar-actions {
+      display: flex;
+      padding: 8px 12px;
+      gap: 16px;
+      background: #2b579a;
+    }
+
+    .word-tool-group {
+      display: flex;
+      gap: 2px;
+    }
+
+    .word-tool-btn {
+      width: 28px;
+      height: 28px;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .word-tool-btn:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .word-document-area {
+      background: #525659;
+      padding: 20px 40px;
+      min-height: 400px;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    .word-page {
+      width: 100%;
+      max-width: 550px;
+      min-height: 700px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      padding: 60px 50px;
+      color: #333;
+      font-family: 'Calibri', 'Segoe UI', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -1220,7 +1335,7 @@
       </div>
       <span class="window-title">Notes</span>
     </div>
-    <div style="display: flex; height: 300px;">
+    <div class="notes-container">
       <div class="notes-sidebar">
         <div class="notes-item active">
           <div class="notes-title">Project Ideas</div>
@@ -1377,56 +1492,45 @@
     </div>
   </div>
 
-  <!-- Experience Window -->
-  <div class="window" id="window-experience" style="top: 60px; left: 120px; width: 550px;">
-    <div class="window-titlebar">
+  <!-- Experience Window (Word-style) -->
+  <div class="window" id="window-experience" style="top: 60px; left: 120px; width: 650px;">
+    <div class="window-titlebar" style="background: #2b579a;">
       <div class="window-controls">
         <div class="window-btn close"></div>
         <div class="window-btn minimize"></div>
         <div class="window-btn maximize"></div>
       </div>
-      <span class="window-title">Experience</span>
+      <span class="window-title">Experience.docx - Word</span>
     </div>
-    <div class="info-window" style="max-height: 400px; overflow-y: auto;">
-      <div class="experience-item">
-        <div class="experience-role">Senior Software Engineer</div>
-        <div class="experience-company">Tech Company Inc.</div>
-        <div class="experience-date">2022 - Present</div>
+    <!-- Word Toolbar -->
+    <div class="word-toolbar">
+      <div class="word-toolbar-tabs">
+        <span class="word-tab active">Home</span>
+        <span class="word-tab">Insert</span>
+        <span class="word-tab">Layout</span>
+        <span class="word-tab">View</span>
       </div>
-      <div class="experience-item">
-        <div class="experience-role">Full Stack Developer</div>
-        <div class="experience-company">Startup Labs</div>
-        <div class="experience-date">2020 - 2022</div>
+      <div class="word-toolbar-actions">
+        <div class="word-tool-group">
+          <button class="word-tool-btn">B</button>
+          <button class="word-tool-btn" style="font-style: italic;">I</button>
+          <button class="word-tool-btn" style="text-decoration: underline;">U</button>
+        </div>
+        <div class="word-tool-group">
+          <button class="word-tool-btn">≡</button>
+          <button class="word-tool-btn">≡</button>
+          <button class="word-tool-btn">≡</button>
+        </div>
       </div>
-      <div class="experience-item">
-        <div class="experience-role">Frontend Developer</div>
-        <div class="experience-company">Digital Agency</div>
-        <div class="experience-date">2018 - 2020</div>
+    </div>
+    <!-- Word Document Area -->
+    <div class="word-document-area">
+      <div class="word-page">
+        <!-- Blank page content will go here -->
       </div>
     </div>
   </div>
 
-  <!-- Resume Window -->
-  <div class="window" id="window-resume" style="top: 50px; left: 100px; width: 500px;">
-    <div class="window-titlebar">
-      <div class="window-controls">
-        <div class="window-btn close"></div>
-        <div class="window-btn minimize"></div>
-        <div class="window-btn maximize"></div>
-      </div>
-      <span class="window-title">Resume.pdf</span>
-    </div>
-    <div style="background: #525659; padding: 20px; min-height: 350px; display: flex; align-items: center; justify-content: center;">
-      <div style="background: white; width: 90%; height: 300px; border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #333;">
-        <div style="font-size: 48px; margin-bottom: 16px;">📄</div>
-        <div style="font-size: 18px; font-weight: 600;">Resume</div>
-        <div style="color: #666; margin-top: 8px; font-size: 14px;">Apoorv Darshan</div>
-        <button style="margin-top: 20px; padding: 10px 24px; background: #007AFF; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;">
-          Download PDF
-        </button>
-      </div>
-    </div>
-  </div>
 
   <!-- Credits Window -->
   <div class="window" id="window-credits" style="top: 80px; left: 160px; width: 450px;">
@@ -1468,11 +1572,11 @@
           <span class="icon-label">Experience</span>
         </div>
 
-        <div class="desktop-icon" data-window="resume">
+        <div class="desktop-icon" data-link="resume.pdf">
           <div class="icon-wrapper">
             <img src="icons/pdf.png" alt="Resume" class="desktop-icon-img">
           </div>
-          <span class="icon-label">Resume.pdf</span>
+          <span class="icon-label">Resume</span>
         </div>
 
         <div class="desktop-icon" data-window="credits">
@@ -1489,14 +1593,14 @@
           <span class="icon-label">Projects</span>
         </div>
 
-        <div class="desktop-icon" data-link="https://x.com">
+        <div class="desktop-icon" data-link="https://x.com/apoorvdarshan">
           <div class="icon-wrapper">
             <img src="icons/x.png" alt="X" class="desktop-icon-img">
           </div>
           <span class="icon-label">X</span>
         </div>
 
-        <div class="desktop-icon" data-link="https://cal.com">
+        <div class="desktop-icon" data-link="https://cal.com/apoorvdarshan">
           <div class="icon-wrapper">
             <img src="icons/meet.png" alt="Meet" class="desktop-icon-img">
           </div>
@@ -1615,7 +1719,6 @@
       settings: document.getElementById('window-settings'),
       about: document.getElementById('window-about'),
       experience: document.getElementById('window-experience'),
-      resume: document.getElementById('window-resume'),
       credits: document.getElementById('window-credits')
     };
 
@@ -1780,6 +1883,58 @@
           selectedIcon = null;
         }
       }
+    });
+
+    // Window dragging
+    let isDragging = false;
+    let dragWindow = null;
+    let dragOffsetX = 0;
+    let dragOffsetY = 0;
+
+    // Setup dragging for all windows
+    document.querySelectorAll('.window-titlebar').forEach(titlebar => {
+      titlebar.addEventListener('mousedown', (e) => {
+        // Don't drag if clicking on window controls
+        if (e.target.classList.contains('window-btn')) return;
+
+        const win = titlebar.closest('.window');
+        if (!win || win.classList.contains('fullscreen')) return;
+
+        isDragging = true;
+        dragWindow = win;
+
+        const rect = win.getBoundingClientRect();
+        dragOffsetX = e.clientX - rect.left;
+        dragOffsetY = e.clientY - rect.top;
+
+        // Focus window
+        const appName = win.id.replace('window-', '');
+        focusWindow(appName);
+
+        e.preventDefault();
+      });
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging || !dragWindow) return;
+
+      let newX = e.clientX - dragOffsetX;
+      let newY = e.clientY - dragOffsetY;
+
+      // Keep window within bounds (above dock which is ~70px)
+      const minY = 25; // Below menu bar
+      const maxY = window.innerHeight - dragWindow.offsetHeight - 70; // Above dock
+
+      newX = Math.max(0, Math.min(newX, window.innerWidth - 100));
+      newY = Math.max(minY, Math.min(newY, maxY));
+
+      dragWindow.style.left = newX + 'px';
+      dragWindow.style.top = newY + 'px';
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      dragWindow = null;
     });
 
     // Parent events
