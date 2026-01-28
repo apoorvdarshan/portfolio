@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "compression-webpack-plugin": "^10.0.0",
+    "jimp": "^1.6.0",
     "terser-webpack-plugin": "^5.3.9",
     "webpack-bundle-analyzer": "^4.10.1"
   }
