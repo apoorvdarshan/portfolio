@@ -20,6 +20,7 @@ export default class AudioManager {
   }
 
   setAudioManager() {
+    if (!this.audioButton) return;
     this.audioButton.addEventListener("click", () => {
       if (this.audioButton.classList.contains("audio-button-muted")) {
         this.isMuted = false;
