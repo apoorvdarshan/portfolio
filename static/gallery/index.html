@@ -1,392 +1,533 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects Gallery</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects Gallery</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    body {
-      background: #0a0a0f;
-      color: #fff;
-      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-      overflow: hidden;
-      width: 100vw;
-      height: 100vh;
-    }
+      body {
+        background: #0a0a0f;
+        color: #fff;
+        font-family:
+          "SF Pro Display",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+      }
 
-    #gallery {
-      width: 100%;
-      height: 100%;
-      perspective: 1000px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding: 40px;
-    }
+      #gallery {
+        width: 100%;
+        height: 100%;
+        perspective: 1000px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 40px;
+      }
 
-    .gallery-header {
-      text-align: center;
-      margin-bottom: 40px;
-      padding-top: 20px;
-    }
+      .gallery-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding-top: 20px;
+      }
 
-    .gallery-header h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 10px;
-    }
+      .gallery-header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+      }
 
-    .gallery-header p {
-      color: #888;
-      font-size: 1rem;
-    }
+      .gallery-header p {
+        color: #888;
+        font-size: 1rem;
+      }
 
-    .section {
-      margin-bottom: 50px;
-    }
+      .section {
+        margin-bottom: 50px;
+      }
 
-    .section-title {
-      font-size: 1.4rem;
-      color: #667eea;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #222;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+      .section-title {
+        font-size: 1.4rem;
+        color: #667eea;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #222;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-    .section-title::before {
-      content: '';
-      width: 4px;
-      height: 20px;
-      background: linear-gradient(180deg, #667eea, #764ba2);
-      border-radius: 2px;
-    }
+      .section-title::before {
+        content: "";
+        width: 4px;
+        height: 20px;
+        background: linear-gradient(180deg, #667eea, #764ba2);
+        border-radius: 2px;
+      }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+      }
 
-    .project-card {
-      background: linear-gradient(145deg, #12121a 0%, #1a1a25 100%);
-      border: 1px solid #2a2a3a;
-      border-radius: 12px;
-      padding: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      position: relative;
-      overflow: hidden;
-    }
+      .project-card {
+        background: linear-gradient(145deg, #12121a 0%, #1a1a25 100%);
+        border: 1px solid #2a2a3a;
+        border-radius: 12px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        position: relative;
+        overflow: hidden;
+      }
 
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #667eea, #764ba2);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
 
-    .project-card:hover {
-      transform: translateY(-5px);
-      border-color: #667eea;
-      box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
-    }
+      .project-card:hover {
+        transform: translateY(-5px);
+        border-color: #667eea;
+        box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+      }
 
-    .project-card:hover::before {
-      opacity: 1;
-    }
+      .project-card:hover::before {
+        opacity: 1;
+      }
 
-    .project-icon {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-    }
+      .project-icon {
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+      }
 
-    .project-name {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+      .project-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
 
-    .project-name .tag {
-      font-size: 0.65rem;
-      padding: 2px 6px;
-      background: #ff6b6b;
-      color: #fff;
-      border-radius: 4px;
-      font-weight: 500;
-    }
+      .project-name .tag {
+        font-size: 0.65rem;
+        padding: 2px 6px;
+        background: #ff6b6b;
+        color: #fff;
+        border-radius: 4px;
+        font-weight: 500;
+      }
 
-    .project-description {
-      font-size: 0.85rem;
-      color: #888;
-      line-height: 1.5;
-    }
+      .project-description {
+        font-size: 0.85rem;
+        color: #888;
+        line-height: 1.5;
+      }
 
-    .project-stats {
-      margin-top: 12px;
-      font-size: 0.75rem;
-      color: #667eea;
-      font-style: italic;
-    }
+      .project-stats {
+        margin-top: 12px;
+        font-size: 0.75rem;
+        color: #667eea;
+        font-style: italic;
+      }
 
-    .github-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 10px;
-      font-size: 0.8rem;
-      color: #667eea;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
+      .github-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 10px;
+        font-size: 0.8rem;
+        color: #667eea;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
 
-    .project-card:hover .github-link {
-      opacity: 1;
-    }
+      .project-card:hover .github-link {
+        opacity: 1;
+      }
 
-    /* Scrollbar styling */
-    #gallery::-webkit-scrollbar {
-      width: 8px;
-    }
+      /* Scrollbar styling */
+      #gallery::-webkit-scrollbar {
+        width: 8px;
+      }
 
-    #gallery::-webkit-scrollbar-track {
-      background: #0a0a0f;
-    }
+      #gallery::-webkit-scrollbar-track {
+        background: #0a0a0f;
+      }
 
-    #gallery::-webkit-scrollbar-thumb {
-      background: #333;
-      border-radius: 4px;
-    }
+      #gallery::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
 
-    #gallery::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
+      #gallery::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
 
-    /* Footer */
-    .gallery-footer {
-      text-align: center;
-      padding: 40px 0;
-      color: #444;
-      font-size: 0.85rem;
-    }
+      /* Footer */
+      .gallery-footer {
+        text-align: center;
+        padding: 40px 0;
+        color: #444;
+        font-size: 0.85rem;
+      }
 
-    .gallery-footer a {
-      color: #667eea;
-      text-decoration: none;
-    }
-  </style>
-</head>
-<body>
-  <div id="gallery">
-    <div class="gallery-header">
-      <h1>My Projects</h1>
-      <p>A collection of things I've built</p>
-    </div>
+      .gallery-footer a {
+        color: #667eea;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="gallery">
+      <div class="gallery-header">
+        <h1>My Projects</h1>
+        <p>A collection of things I've built</p>
+      </div>
 
-    <div class="section">
-      <h2 class="section-title">Current Projects</h2>
-      <div class="projects-grid">
-        <a href="https://github.com/apoorvdarshan/portfolio" target="_blank" class="project-card">
-          <div class="project-icon">🖥️</div>
-          <div class="project-name">portfolio</div>
-          <div class="project-description">Personal portfolio website</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
+      <div class="section">
+        <h2 class="section-title">Current Projects</h2>
+        <div class="projects-grid">
+          <a
+            href="https://github.com/apoorvdarshan/portfolio"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🖥️</div>
+            <div class="project-name">portfolio</div>
+            <div class="project-description">Personal portfolio website</div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
 
-        <a href="https://github.com/OpenXeno/OpenXeno" target="_blank" class="project-card">
-          <div class="project-icon">🐙</div>
-          <div class="project-name">OpenXeno</div>
-          <div class="project-description">A social media platform where AI bots exist, chat, and interact</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
+          <a
+            href="https://github.com/apoorvdarshan/OpenXeno"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🐙</div>
+            <div class="project-name">OpenXeno</div>
+            <div class="project-description">
+              A social media platform where AI bots exist, chat, and interact
+            </div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Legacy Work</h2>
+        <div class="projects-grid">
+          <a
+            href="https://affiliate.axentraos.com/"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🏢</div>
+            <div class="project-name">
+              axentra-os-affiliate <span class="tag">closed source</span>
+            </div>
+            <div class="project-description">
+              CRM platform built during internship at XIRCLS
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/dob-selector"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">📅</div>
+            <div class="project-name">dob-selector</div>
+            <div class="project-description">
+              Intentionally bad UI date picker; viral on Reddit
+            </div>
+            <div class="project-stats">130K+ views</div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/zyro"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">📰</div>
+            <div class="project-name">zyro</div>
+            <div class="project-description">
+              AI news website (GNews.io API, 100 req/day limit)
+            </div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://www.iitjee.xyz/"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">📚</div>
+            <div class="project-name">
+              iitjee <span class="tag">closed source</span>
+            </div>
+            <div class="project-description">
+              Handwritten notes for IIT JEE prep
+            </div>
+            <div class="project-stats">100+ organic visitors/month</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/slot-machine-date-picker"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🎰</div>
+            <div class="project-name">slot-machine-date-picker</div>
+            <div class="project-description">
+              Slot machine date picker; intentionally bad UI
+            </div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/doodle-beats"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🎵</div>
+            <div class="project-name">doodle-beats</div>
+            <div class="project-description">Doodle-style web music player</div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/resume-codes"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">📄</div>
+            <div class="project-name">resume-codes</div>
+            <div class="project-description">
+              Resume builder with live preview
+            </div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/zombie-game"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🧟</div>
+            <div class="project-name">zombie-game</div>
+            <div class="project-description">
+              3D zombie survival FPS with Three.js
+            </div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/gesture-keyboard"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🖐️</div>
+            <div class="project-name">gesture-keyboard</div>
+            <div class="project-description">
+              MediaPipe-powered hands-free virtual keyboard
+            </div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/drawtica"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🎨</div>
+            <div class="project-name">drawtica</div>
+            <div class="project-description">Hand-gesture drawing app</div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/peek-a-pupil"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">👁️</div>
+            <div class="project-name">peek-a-pupil</div>
+            <div class="project-description">
+              Horror-themed interactive eye with gesture control
+            </div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/headshot-tracker"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🎯</div>
+            <div class="project-name">headshot-tracker</div>
+            <div class="project-description">
+              Real-time face tracking with sci-fi HUD
+            </div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/compress-image"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🗜️</div>
+            <div class="project-name">compress-image</div>
+            <div class="project-description">
+              Client-side image compression (browser-only, nothing uploaded)
+            </div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/dtu-clone"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🏛️</div>
+            <div class="project-name">dtu-clone</div>
+            <div class="project-description">DTU website with cyberpunk UI</div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/redbull"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🐂</div>
+            <div class="project-name">redbull</div>
+            <div class="project-description">
+              Red Bull landing page reimagined
+            </div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/toggle-button"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🌗</div>
+            <div class="project-name">toggle-button</div>
+            <div class="project-description">
+              Star Wars themed dark/light mode toggle
+            </div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/bmw"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🚗</div>
+            <div class="project-name">bmw</div>
+            <div class="project-description">BMW landing page clone</div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/monster-energy"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🐉</div>
+            <div class="project-name">monster-energy</div>
+            <div class="project-description">Monster Energy landing page</div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/random-dog-images"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🐕</div>
+            <div class="project-name">random-dog-images</div>
+            <div class="project-description">
+              Random dog images powered by Dog CEO API
+            </div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/random-cat-facts"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🐈</div>
+            <div class="project-name">random-cat-facts</div>
+            <div class="project-description">
+              Cat facts powered by catfact.ninja API
+            </div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/todo-app"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🧙</div>
+            <div class="project-name">todo-app</div>
+            <div class="project-description">Harry Potter-themed To-Do app</div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+
+          <a
+            href="https://github.com/apoorvdarshan/spotify-clone"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-icon">🎧</div>
+            <div class="project-name">spotify-clone</div>
+            <div class="project-description">Spotify UI clone</div>
+            <div class="github-link">→ View on GitHub</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="gallery-footer">
+        <p>
+          Built by
+          <a href="https://github.com/apoorvdarshan" target="_blank"
+            >Apoorv Darshan</a
+          >
+        </p>
       </div>
     </div>
-
-    <div class="section">
-      <h2 class="section-title">Legacy Work</h2>
-      <div class="projects-grid">
-        <a href="https://affiliate.axentraos.com/" target="_blank" class="project-card">
-          <div class="project-icon">🏢</div>
-          <div class="project-name">axentra-os-affiliate <span class="tag">closed source</span></div>
-          <div class="project-description">CRM platform built during internship at XIRCLS</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/dob-selector" target="_blank" class="project-card">
-          <div class="project-icon">📅</div>
-          <div class="project-name">dob-selector</div>
-          <div class="project-description">Intentionally bad UI date picker; viral on Reddit</div>
-          <div class="project-stats">130K+ views</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/zyro" target="_blank" class="project-card">
-          <div class="project-icon">📰</div>
-          <div class="project-name">zyro</div>
-          <div class="project-description">AI news website (GNews.io API, 100 req/day limit)</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://www.iitjee.xyz/" target="_blank" class="project-card">
-          <div class="project-icon">📚</div>
-          <div class="project-name">iitjee <span class="tag">closed source</span></div>
-          <div class="project-description">Handwritten notes for IIT JEE prep</div>
-          <div class="project-stats">100+ organic visitors/month</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/slot-machine-date-picker" target="_blank" class="project-card">
-          <div class="project-icon">🎰</div>
-          <div class="project-name">slot-machine-date-picker</div>
-          <div class="project-description">Slot machine date picker; intentionally bad UI</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/doodle-beats" target="_blank" class="project-card">
-          <div class="project-icon">🎵</div>
-          <div class="project-name">doodle-beats</div>
-          <div class="project-description">Doodle-style web music player</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/resume-codes" target="_blank" class="project-card">
-          <div class="project-icon">📄</div>
-          <div class="project-name">resume-codes</div>
-          <div class="project-description">Resume builder with live preview</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/zombie-game" target="_blank" class="project-card">
-          <div class="project-icon">🧟</div>
-          <div class="project-name">zombie-game</div>
-          <div class="project-description">3D zombie survival FPS with Three.js</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/gesture-keyboard" target="_blank" class="project-card">
-          <div class="project-icon">🖐️</div>
-          <div class="project-name">gesture-keyboard</div>
-          <div class="project-description">MediaPipe-powered hands-free virtual keyboard</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/drawtica" target="_blank" class="project-card">
-          <div class="project-icon">🎨</div>
-          <div class="project-name">drawtica</div>
-          <div class="project-description">Hand-gesture drawing app</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/peek-a-pupil" target="_blank" class="project-card">
-          <div class="project-icon">👁️</div>
-          <div class="project-name">peek-a-pupil</div>
-          <div class="project-description">Horror-themed interactive eye with gesture control</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/headshot-tracker" target="_blank" class="project-card">
-          <div class="project-icon">🎯</div>
-          <div class="project-name">headshot-tracker</div>
-          <div class="project-description">Real-time face tracking with sci-fi HUD</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/compress-image" target="_blank" class="project-card">
-          <div class="project-icon">🗜️</div>
-          <div class="project-name">compress-image</div>
-          <div class="project-description">Client-side image compression (browser-only, nothing uploaded)</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/dtu-clone" target="_blank" class="project-card">
-          <div class="project-icon">🏛️</div>
-          <div class="project-name">dtu-clone</div>
-          <div class="project-description">DTU website with cyberpunk UI</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/redbull" target="_blank" class="project-card">
-          <div class="project-icon">🐂</div>
-          <div class="project-name">redbull</div>
-          <div class="project-description">Red Bull landing page reimagined</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/toggle-button" target="_blank" class="project-card">
-          <div class="project-icon">🌗</div>
-          <div class="project-name">toggle-button</div>
-          <div class="project-description">Star Wars themed dark/light mode toggle</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/bmw" target="_blank" class="project-card">
-          <div class="project-icon">🚗</div>
-          <div class="project-name">bmw</div>
-          <div class="project-description">BMW landing page clone</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/monster-energy" target="_blank" class="project-card">
-          <div class="project-icon">🐉</div>
-          <div class="project-name">monster-energy</div>
-          <div class="project-description">Monster Energy landing page</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/random-dog-images" target="_blank" class="project-card">
-          <div class="project-icon">🐕</div>
-          <div class="project-name">random-dog-images</div>
-          <div class="project-description">Random dog images powered by Dog CEO API</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/random-cat-facts" target="_blank" class="project-card">
-          <div class="project-icon">🐈</div>
-          <div class="project-name">random-cat-facts</div>
-          <div class="project-description">Cat facts powered by catfact.ninja API</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/todo-app" target="_blank" class="project-card">
-          <div class="project-icon">🧙</div>
-          <div class="project-name">todo-app</div>
-          <div class="project-description">Harry Potter-themed To-Do app</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-
-        <a href="https://github.com/apoorvdarshan/spotify-clone" target="_blank" class="project-card">
-          <div class="project-icon">🎧</div>
-          <div class="project-name">spotify-clone</div>
-          <div class="project-description">Spotify UI clone</div>
-          <div class="github-link">→ View on GitHub</div>
-        </a>
-      </div>
-    </div>
-
-    <div class="gallery-footer">
-      <p>Built by <a href="https://github.com/apoorvdarshan" target="_blank">Apoorv Darshan</a></p>
-    </div>
-  </div>
-</body>
+  </body>
 </html>
